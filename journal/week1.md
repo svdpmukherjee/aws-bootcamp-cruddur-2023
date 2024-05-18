@@ -34,7 +34,8 @@ Command line:
 
 ## Setting up budget
 ~~~text
-Command line:
+1. Create "budget.json" and "budget-notifications-with-subscriber.json" under "aws/json" folder (examples taken from https://docs.aws.amazon.com/cli/latest/reference/budgets/create-budget.html#examples)
+2. Command line:
   aws budgets create-budget \
       --account-id 654654406147 \
       --budget file://aws/json/budget.json \
@@ -49,4 +50,11 @@ Command line:
       --topic-arn arn:aws:sns:eu-central-1:654654406147:billing-alarm \
       --protocol email \
       --notification-endpoint svdp.mukherjee.lux@gmail.com
+~~~
+
+## Setting up alarm
+~~~text
+1. Create "alarm-cofig.json" under "aws/json" folder (examples taken from https://repost.aws/knowledge-center/cloudwatch-estimatedcharges-alarm)
+2. Command line:
+  aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.json
 ~~~
