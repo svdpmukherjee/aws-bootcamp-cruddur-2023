@@ -26,7 +26,23 @@ vscode:
 
 2. Set aws credentials in gitpod so that it remembers "aws sts get-caller-identity" if we relaunch the workspace
 ~~~text
-gp env AWS_ACCESS_KEY_ID=<aws access key>
-gp env AWS_SECRET_ACCESS_KEY=<secret access key>
-gp env AWS_DEFAULT_REGION="eu-central-1"
+Command line:
+  gp env AWS_ACCESS_KEY_ID=<aws access key>
+  gp env AWS_SECRET_ACCESS_KEY=<secret access key>
+  gp env AWS_DEFAULT_REGION="eu-central-1"
 ~~~
+
+## Setting up budget and notifications
+Command line:
+  aws budgets create-budget \
+      --account-id 654654406147 \
+      --budget file://aws/json/budget.json \
+      --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
+
+  aws sns create-topic \
+      --name my-topic
+
+  aws sns subscribe \
+      --topic-arn arn:aws:sns:eu-central-1:654654406147:billing-alarm \
+      --protocol email \
+      --notification-endpoint svdp.mukherjee.lux@gmail.com
