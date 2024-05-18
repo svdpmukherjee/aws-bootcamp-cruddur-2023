@@ -33,6 +33,7 @@ Command line:
 ~~~
 
 ## Setting up budget and notifications
+~~~text
 Command line:
   aws budgets create-budget \
       --account-id 654654406147 \
@@ -46,3 +47,4 @@ Command line:
       --topic-arn arn:aws:sns:eu-central-1:654654406147:billing-alarm \
       --protocol email \
       --notification-endpoint svdp.mukherjee.lux@gmail.com
+~~~
