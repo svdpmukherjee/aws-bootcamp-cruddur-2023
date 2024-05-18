@@ -32,17 +32,19 @@ Command line:
   gp env AWS_DEFAULT_REGION="eu-central-1"
 ~~~
 
-## Setting up budget and notifications
+## Setting up budget
 ~~~text
 Command line:
   aws budgets create-budget \
       --account-id 654654406147 \
       --budget file://aws/json/budget.json \
       --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
-
+~~~
+## Setting up notifications
+~~~text
+Command line:
   aws sns create-topic \
-      --name my-topic
-
+      --name billing-alarm
   aws sns subscribe \
       --topic-arn arn:aws:sns:eu-central-1:654654406147:billing-alarm \
       --protocol email \
